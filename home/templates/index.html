@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+{% if user %}
+<title>首页</title>
+{% else %}
+<title>登陆</title>
+{% endif %}
+<meta name="description" content="登录界面">
+<meta name="keywords" content="登录界面">
+<style>
+	body,p,div,ul,li,h1,h2,h3,h4,h5,h6{
+		margin:0;
+		padding: 0;
+	}
+	body{
+		background:  #E9E9E9;
+	}
+	#login{
+		width: 400px;
+		height: 260px;
+		background: #FFF;
+		margin:200px auto;
+		position: relative;
+	}
+	#login h1{
+		text-align:center;
+		position:absolute;
+		left:160px;
+		top:-40px;
+		font-size:21px;
+	}
+	#login form p{
+		text-align: center;
+	}
+	#user{
+		background:url(http://demo.mycodes.net/denglu/DIV_CSS_login/images/user.png) rgba(0,0,0,.1) no-repeat;
+		width: 200px;
+		height: 30px;
+		border:solid #ccc 1px;
+		border-radius: 3px;
+		padding-left: 32px;
+		margin-top: 50px;
+		margin-bottom: 30px;
+	}
+	#pwd{
+		background: url(http://demo.mycodes.net/denglu/DIV_CSS_login/images/pwd.png) rgba(0,0,0,.1) no-repeat;
+		width: 200px;
+		height: 30px;
+		border:solid #ccc 1px;
+		border-radius: 3px;
+		padding-left: 32px;
+		margin-bottom: 30px;
+	}
+	#submit{
+		width: 232px;
+		height: 30px;
+		background: rgba(0,0,0,.1);
+		border:solid #ccc 1px;
+		border-radius: 3px;
+	}
+	#submit:hover{
+		cursor: pointer;
+		background:#D8D8D8;
+	}
+     table {
+         table-layout: fixed;
+         width: 86%;
+         text-align:center;
+      }
+     td {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          border:1px solid grey;
+     }
+     a {
+        text-decoration: none;
+        color: black;
+     }
+</style>
+</head>
+<body>
+{% if user %}
+    <div style="text-align: center">当前登陆用户为 <strong>{{user}}</strong> [<a href="{{ url_for('.logout') }}" style="color: dodgerblue">退出登陆</a>]</div>
+    <div style="text-align: center;margin-top: 30px;margin-bottom: 30px">
+        <a href="{{ url_for('.clients') }}" style="color: dodgerblue; font-size: 30px">创建客户端</a>
+    </div>
+    {% if clients %}
+            <table border="1" align="center">
+                <caption>客户端列表</caption>
+                <tr>
+                    <th>客户端</th>
+                    <th>客户端ID</th>
+                    <th>客户端密码</th>
+                    <th>验证类型</th>
+                    <th>返回类型</th>
+                    <th>回调地址</th>
+                    <th>请求范围</th>
+                </tr>
+                {% for client in clients %}
+                <tr>
+                    <td><a href="javascript:void(0)" title="{{ client.client_name }}">{{ client.client_name }}</a></td>
+                    <td><a href="javascript:void(0)" title="{{ client.client_id }}">{{ client.client_id }}</a></td>
+                    <td><a href="javascript:void(0)" title="{{ client.client_secret }}">{{ client.client_secret }}</a></td>
+                    <td><a href="javascript:void(0)" title="{{ client.grant_type }}">{{ client.grant_type }}</a></td>
+                    <td><a href="javascript:void(0)" title="{{ client.response_type }}">{{ client.response_type }}</a></td>
+                    <td><a href="javascript:void(0)" title="{{ client.redirect_uri }}">{{ client.redirect_uri }}</a></td>
+                    <td><a href="javascript:void(0)" title="{{ client.scope }}">{{ client.scope }}</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+    {% else %}
+    <div style="text-align: center">
+        <span style="font-size: 30px;color: #cccccc">--没有客户端--</span>
+    </div>
+    {% endif %}
+{% else %}
+<div id="login">
+<h1>登录验证</h1>
+	<form action="/home/" method="post">
+		<p><input type="text" name="user" id="user" placeholder="用户名"></p>
+		<p><input type="password" name="pw" id="pwd" placeholder="密码"></p>
+		<p><input type="submit" id="submit" value="登录"></p>
+        <br>
+		<p><a href="{{ url_for('.register') }}">注册</a></p>
+	</form>
+</div>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建客户端</title>
+    <style>
+      label, label > span { display: block; }
+      label { margin: 15px 0; }
+      .container  {
+          text-align: center;
+      }
+      button {
+          width: 100px;
+          height:30px;
+          background-color: limegreen;
+          border-radius: 5px;
+      }
+      input {
+          width: 202px;
+          height: 24px;
+      }
+        fieldset {
+            width: 60%;
+            margin-left: 20%;
+        }
+        .heder_link {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="heder_link">
+       <a href="/home" style="text-decoration: none;font-size: 30px">主页</a>
+    </div>
+    {% if errors %}
+        <div style="width:63%;height: 30px;background-color: #ff495a;text-align: center;line-height: 30px;margin-left: 20%">
+            <span style="color: white">错误提示：{{ errors.msg }}</span>
+        </div>
+    {% else %}
+    {% endif %}
+    <form action="/home/client" method="post">
+        <fieldset>
+          <legend>添加客户端</legend>
+          <label>
+            <span>客户端名</span>
+            <input type="text" name="client_name" placeholder="请输入客户端名字">
+          </label>
+          <label>
+            <span>Allowed Scope</span>
+            <input type="text" name="scope" placeholder="请输入允许范围">
+          </label>
+          <label>
+            <span>Redirect URIs</span>
+            <textarea name="redirect_uri" cols="30" rows="3" placeholder="请输入回调地址"></textarea>
+          </label>
+          <label>
+            <span>Allowed Grant Types</span>
+            <textarea name="grant_type" cols="30" rows="3" placeholder="请输入验证方式"></textarea>
+          </label>
+          <label>
+            <span>Allowed Response Types</span>
+            <textarea name="response_type" cols="30" rows="3" placeholder="请输入返回类型"></textarea>
+          </label>
+          <button>Submit</button>
+        </fieldset>
+
+    </form>
+</div>
+</body>
+</html>
