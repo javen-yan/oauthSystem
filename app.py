@@ -16,6 +16,12 @@ def index():
     return 'Oauth server'
 
 
+@app.route('/api/me')
+def me():
+    if request.args.get('token'):
+        return jsonify(code=0,token=request.args.get('token'))
+
+
 @app.before_request
 def _db_connect():
     mysql_db.connect()
