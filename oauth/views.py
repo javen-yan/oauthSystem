@@ -4,7 +4,8 @@
 # @Email   : yanzz@catial.cn
 # @File    : views.py
 # @Software: PyCharm
-from flask import request, jsonify, render_template, redirect
+from flask import request, jsonify, render_template
+from libs.rewrite.rewrite_utils import redirect
 from home.views import current_user
 from libs.auth_code_lib.auth_code_lib import gen_auth_code, verify_auth_code
 from libs.auth_token_lib.auth_token_lib import gen_token_return
