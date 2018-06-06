@@ -40,8 +40,8 @@ def oauth_token():
             print('code response', response)
             if response.get('code') == 1:
                 error_token = {
-                    'error': 1,
-                    'error_description':response.get('msg')
+                    "error": 1,
+                    "error_description":response.get('msg')
                 }
                 format = json.dumps(error_token)
                 return Response(
@@ -52,10 +52,9 @@ def oauth_token():
             else:
                 res_Data = response.get('data')
                 token_res = {
-                    'retCode': 0,
-                    'access_token': res_Data.access_token,
-                    'refresh_token': res_Data.refresh_token,
-                    'expires_in': res_Data.expires_in
+                    "access_token": res_Data.access_token,
+                    "refresh_token": res_Data.refresh_token,
+                    "expires_in": res_Data.expires_in
                 }
                 formarts = json.dumps(token_res)
                 return Response(
