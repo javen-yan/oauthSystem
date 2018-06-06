@@ -4,7 +4,7 @@
 # @Email   : yanzz@catial.cn
 # @File    : views.py
 # @Software: PyCharm
-from flask import request, jsonify, render_template
+from flask import request, jsonify, render_template, redirect
 from home.views import current_user
 from libs.auth_code_lib.auth_code_lib import gen_auth_code, verify_auth_code
 from libs.auth_token_lib.auth_token_lib import gen_token_return
@@ -66,7 +66,8 @@ def authorize():
                 return jsonify(code=1,msg='incorrect redirect_uri')
     else:
         if request.form['confirm']:
-            return gen_auth_code(grant, _redirect_url)
+            uri = gen_auth_code(grant, _redirect_url)
+            return redirect(uri)
         else:
             return render_template('oauth.html', grant=grant, user=user)
 

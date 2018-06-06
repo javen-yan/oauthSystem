@@ -24,7 +24,7 @@ def gen_auth_code(grant, redirect_uri):
     )
     authcode_tmp.save()
     _redirect_uri = redirect_uri + '&code=%s' % code
-    return redirect(_redirect_uri)
+    return _redirect_uri
 
 
 def verify_auth_code(data):
