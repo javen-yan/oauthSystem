@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>认证</title>
+</head>
+<body>
+<p>{{grant.client_name}} 正在请求认证:
+<strong>{{ grant.scope }}</strong>
+</p>
+<form action="" method="post">
+  <label>
+    <input type="checkbox" name="confirm">
+    <span>是否同意?</span>
+  </label>
+  <br>
+  <button>同意</button>
+</form>
+</body>
+</html>

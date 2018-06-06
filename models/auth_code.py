@@ -16,7 +16,7 @@ class AuthCode(Model):
     redirect_uri = TextField(default='')
     response_type = TextField(default='')
     scope = TextField(default='')
-    nonce = TextField()
+    nonce = TextField(null=True)
     auth_time = IntegerField(default=lambda: int(time.time()))
 
     def is_expired(self):
