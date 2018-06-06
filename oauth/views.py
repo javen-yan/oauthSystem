@@ -7,6 +7,8 @@
 import json
 
 from flask import request, jsonify, render_template, Response
+
+from libs.json_file.json_file_lib import json_file_redaer, json_write
 from libs.rewrite.rewrite_utils import redirect
 from home.views import current_user
 from libs.auth_code_lib.auth_code_lib import gen_auth_code, verify_auth_code
@@ -16,9 +18,12 @@ from oauth import oauth
 _redirect_url = None
 grant = None
 
+save_json = json_file_redaer()
+
 
 @oauth.route('/token', methods=['GET','POST'])
 def oauth_token():
+    global save_json
     if request.method == 'GET':
         return jsonify(code=1,msg='Not support GET methods')
     else:
@@ -44,7 +49,8 @@ def oauth_token():
                     "error_description":response.get('msg')
                 }
                 format = json.dumps(error_token)
-                print(error_token)
+                save_json['eror_token'] = error_token
+                json_write(save_json)
                 return Response(
                     response=format,
                     mimetype="application/json",
@@ -58,7 +64,8 @@ def oauth_token():
                     "expires_in": res_Data.expires_in
                 }
                 formarts = json.dumps(token_res)
-                print(token_res)
+                save_json['token'] = token_res
+                json_write(save_json)
                 return Response(
                     response=formarts,
                     mimetype="application/json",
