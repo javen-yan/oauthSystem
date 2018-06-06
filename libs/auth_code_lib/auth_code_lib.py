@@ -28,9 +28,9 @@ def gen_auth_code(grant, redirect_uri):
 
 
 def verify_auth_code(data):
+    client = None
     try:
         client = Client.get(Client.client_id == data.get('client_id'))
-        print(client.client_id)
     except Exception as e:
         pass
     if data.get('client_secret') != client.client_secret:
