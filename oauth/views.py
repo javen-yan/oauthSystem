@@ -40,7 +40,7 @@ def oauth_token():
             print('code response', response)
             if response.get('code') == 1:
                 error_token = {
-                    "error": 1,
+                    "error": "001",
                     "error_description":response.get('msg')
                 }
                 format = json.dumps(error_token)
