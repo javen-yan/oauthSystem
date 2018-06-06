@@ -4,7 +4,9 @@
 # @Email   : yanzz@catial.cn
 # @File    : views.py
 # @Software: PyCharm
-from flask import request, jsonify, render_template
+import json
+
+from flask import request, jsonify, render_template, Response
 from libs.rewrite.rewrite_utils import redirect
 from home.views import current_user
 from libs.auth_code_lib.auth_code_lib import gen_auth_code, verify_auth_code
@@ -27,16 +29,28 @@ def oauth_token():
         else:
             response = gen_token_return(data)
             if response.get('code') == 1:
-                return jsonify(
-                    error=1,
-                    error_description=response.get('msg')
+                error_token = {
+                    'error': 1,
+                    'error_description':response.get('msg')
+                }
+                format = json.dumps(error_token)
+                return Response(
+                    response=format,
+                    mimetype="application/json",
+                    status=200
                 )
             else:
                 res_Data = response.get('data')
-                return jsonify(
-                    access_token=res_Data.access_token,
-                    refresh_token=res_Data.refresh_token,
-                    expires_in=res_Data.expires_in
+                token_res = {
+                    'access_token': res_Data.access_token,
+                    'refresh_token': res_Data.refresh_token,
+                    'expires_in': res_Data.expires_in
+                }
+                formarts = json.dumps(token_res)
+                return Response(
+                    response=formarts,
+                    mimetype="application/json",
+                    status=200
                 )
 
 
