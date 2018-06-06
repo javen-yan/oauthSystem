@@ -4,14 +4,14 @@
 # @Email   : yanzz@catial.cn
 # @File    : auth_token_lib.py
 # @Software: PyCharm
-from libs.security.security import gen_salt
+from libs.security.security import gen_salt, generate_token
 from models.auth_token import AuthToken
 from models.client import Client
 
 
 def gen_token_return(params):
-    access_token = gen_salt(48)
-    refresh_token = gen_salt(48)
+    access_token = generate_token(48)
+    refresh_token = generate_token(48)
     client_id = params.get('client_id')
     try:
         client = Client.get(Client.client_id == client_id)
