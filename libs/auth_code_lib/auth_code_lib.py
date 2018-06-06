@@ -30,8 +30,9 @@ def gen_auth_code(grant, redirect_uri):
 def verify_auth_code(data):
     try:
         client = Client.get(Client.client_id == data.get('client_id'))
+        print(client.client_id)
     except Exception as e:
-        return {'code': 1, 'msg': 'No such Client'}
+        pass
     if data.get('client_secret') != client.client_secret:
         return {'code': 1, 'msg': 'client_secret is error'}
     else:

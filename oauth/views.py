@@ -25,13 +25,21 @@ def oauth_token():
         data = request.args
         res = verify_auth_code(data)
         if res.get('code') == 1:
-            return jsonify(code=1,msg=res.get('msg'))
+            error_token = {
+                'error': 1,
+                'error_description': res.get('msg')
+            }
+            format_Res = json.dumps(error_token)
+            return Response(
+                response=format_Res,
+                mimetype="application/json",
+                status=200
+            )
         else:
             response = gen_token_return(data)
             print('code response', response)
             if response.get('code') == 1:
                 error_token = {
-                    'retCode': 1,
                     'error': 1,
                     'error_description':response.get('msg')
                 }
