@@ -16,7 +16,7 @@ def index():
     return 'Oauth server'
 
 
-@app.route('/api/me')
+@app.route('/api/me', methods=['GET', 'POST'])
 def me():
     if request.args.get('token'):
         return jsonify(code=0,token=request.args.get('token'))

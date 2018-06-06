@@ -44,6 +44,7 @@ def oauth_token():
                     "error_description":response.get('msg')
                 }
                 format = json.dumps(error_token)
+                print(error_token)
                 return Response(
                     response=format,
                     mimetype="application/json",
@@ -57,6 +58,7 @@ def oauth_token():
                     "expires_in": res_Data.expires_in
                 }
                 formarts = json.dumps(token_res)
+                print(token_res)
                 return Response(
                     response=formarts,
                     mimetype="application/json",
