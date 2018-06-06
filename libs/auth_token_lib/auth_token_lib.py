@@ -13,11 +13,10 @@ def gen_token_return(params):
     access_token = gen_salt(48)
     refresh_token = gen_salt(48)
     client_id = params.get('client_id')
-    client = None
     try:
         client = Client.get(Client.client_id == client_id)
     except Exception as e:
-        pass
+        return {'code': 1, 'msg': 'no such client'}
     token_tmp = AuthToken(
         user_id=client.user_id,
         client_id=client.client_id,
