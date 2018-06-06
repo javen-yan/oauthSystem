@@ -21,5 +21,5 @@ def gen_salt(length):
 
 
 def generate_token(length=30, chars=UNICODE_ASCII_CHARACTER_SET):
-    rand = random.SystemRandom()
+    rand = SystemRandom()
     return ''.join(rand.choice(chars) for x in range(length))
