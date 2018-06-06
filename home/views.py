@@ -5,10 +5,13 @@
 # @File    : views.py
 # @Software: PyCharm
 from flask import session, request, jsonify, render_template, redirect
+from werkzeug.security import generate_password_hash
+
 from home import home
 from models.client import Client
 from models.user import User
 from libs.security.security import gen_salt
+
 
 def current_user():
     if 'id' in session:
@@ -74,12 +77,12 @@ def register():
             else:
                 user_tmp = User(
                     username=username,
-                    password=pw
+                    password=generate_password_hash(pw)
                 )
                 user_tmp.save()
                 session['id'] = user_tmp.id
                 session.permanent = True
-                return render_template('index.html', user=user)
+                return redirect('/home')
     else:
         return render_template('register.html')
 

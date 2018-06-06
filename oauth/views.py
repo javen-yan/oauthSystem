@@ -10,3 +10,8 @@ from oauth import oauth
 @oauth.route('/token', methods=['GET','POST'])
 def oauth_token():
     return 'token'
+
+
+@oauth.route('/authorize', methods=['GET', 'POST'])
+def authorize():
+    return 'authorize'

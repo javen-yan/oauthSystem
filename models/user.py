@@ -5,6 +5,8 @@
 # @File    : user.py
 # @Software: PyCharm
 from peewee import *
+from werkzeug.security import check_password_hash
+
 from models.db import mysql_db
 from datetime import datetime
 
@@ -12,7 +14,7 @@ from datetime import datetime
 class User(Model):
     id = AutoField(primary_key=True)
     username = CharField(max_length=40)
-    password = CharField(max_length=64)
+    password = CharField(max_length=200)
     first_name = CharField(max_length=20, null=True)
     last_name = CharField(max_length=20, null=True)
     create_at = DateField(default=datetime.now())
@@ -25,7 +27,7 @@ class User(Model):
         return self.id
 
     def check_password(self, password):
-        if password == self.password:
+        if check_password_hash(self.password, password):
             return True
         else:
             return False
