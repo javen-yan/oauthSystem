@@ -28,6 +28,7 @@ def oauth_token():
             return jsonify(code=1,msg=res.get('msg'))
         else:
             response = gen_token_return(data)
+            print('code response', response)
             if response.get('code') == 1:
                 error_token = {
                     'error': 1,
