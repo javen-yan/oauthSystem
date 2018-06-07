@@ -24,9 +24,9 @@ def get_client(uid):
     if uid is None:
         return None
     else:
-        clients = Client.select().filter(Client.user_id == uid).first()
+        clients = Client.select().where(Client.user_id == uid).dicts()
         if clients:
-            return Client.get(Client.user_id == uid)
+            return list(clients)
         else:
             return None
 
