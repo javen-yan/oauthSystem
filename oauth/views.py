@@ -35,6 +35,7 @@ def oauth_token():
         data = request.values
         logging.debug('values param is %s' % request.values)
         logging.debug('*********redirec_uri param is %s**********' % request.values.get('redirect_uri'))
+        print('values param is %s' % request.values)
         res = verify_auth_code(data)
         if res.get('code') == 1:
             error_token = {
@@ -49,7 +50,6 @@ def oauth_token():
             )
         else:
             response = gen_token_return(data)
-            print('code response', response)
             if response.get('code') == 1:
                 error_token = {
                     "error": "001",
