@@ -39,46 +39,16 @@ def oauth_token():
         print('values param is %s' % request.values)
         res = verify_auth_code(data)
         if res.get('code') == 1:
-            error_token = {
-                'error': "001",
-                'error_description': res.get('msg')
-            }
-            format_Res = json.dumps(error_token)
-            return Response(
-                response=format_Res,
-                mimetype="application/json",
-                status=200
-            )
+            return jsonify(error="001",error_description=res.get('msg'))
         else:
             response = gen_token_return(data)
             if response.get('code') == 1:
-                error_token = {
-                    "error": "001",
-                    "error_description":response.get('msg')
-                }
-                format = json.dumps(error_token)
-                save_json['eror_token'] = error_token
-                json_write(save_json)
-                return Response(
-                    response=format,
-                    mimetype="application/json",
-                    status=200
-                )
+                return jsonify(error="001", error_description=response.get('msg'))
             else:
                 res_Data = response.get('data')
-                token_res = {
-                    "access_token": res_Data.access_token,
-                    "refresh_token": res_Data.refresh_token,
-                    "expires_in": res_Data.expires_in
-                }
-                formarts = json.dumps(token_res)
-                save_json['token'] = token_res
-                json_write(save_json)
-                return Response(
-                    response=formarts,
-                    mimetype="application/json",
-                    status=200
-                )
+                return jsonify(access_token=res_Data.access_token,
+                               refresh_token=res_Data.refresh_token,
+                               expires_in=res_Data.expires_in)
 
 
 @oauth.route('/authorize', methods=['GET', 'POST'])
@@ -111,5 +81,4 @@ def authorize():
             uri = gen_auth_code(grant, _redirect_url)
             return redirect(uri)
         else:
-            return render_template('oauth.html', grant=grant, user=user)
-
+            return jsonify(code=1,msg='Client give up')
