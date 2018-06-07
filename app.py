@@ -18,9 +18,11 @@ def index():
 
 @app.route('/api/me', methods=['GET', 'POST'])
 def me():
-    if request.args.get('token'):
-        return jsonify(code=0,token=request.args.get('token'))
-
+    auth = request.headers.get('Authorization')
+    if not auth:
+        return jsonify(error=1,error_description='MissingAuthorizationError')
+    token_string = auth
+    return jsonify(token=token_string)
 
 
 @app.before_request

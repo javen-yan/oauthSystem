@@ -33,6 +33,7 @@ def oauth_token():
         return jsonify(code=1,msg='Not support GET methods')
     else:
         data = request.values
+        # data=json.loads(request.data.decode())
         logging.debug('values param is %s' % request.values)
         logging.debug('*********redirec_uri param is %s**********' % request.values.get('redirect_uri'))
         print('values param is %s' % request.values)
