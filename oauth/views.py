@@ -24,24 +24,22 @@ save_json = json_file_redaer()
 @oauth.route('/token', methods=['GET','POST'])
 def oauth_token():
     global save_json
-    params = None
     if request.method == 'GET':
         return jsonify(code=1,msg='Not support GET methods')
     else:
-        try:
-            params = request.data.decode()
-        except json.decoder.JSONDecodeError as e:
+        params = request.data
+        if params is None:
             error_token = {
                 'error': "001",
-                'error_description': 'server error'
+                'error_description': 'Server can not get Data'
             }
-            format_Res = json.dumps(error_token)
+            format_Ress = json.dumps(error_token)
             return Response(
-                response=format_Res,
+                response=format_Ress,
                 mimetype="application/json",
                 status=200
             )
-        data = json.loads(params)
+        data = json.loads(params.decode())
         res = verify_auth_code(data)
         if res.get('code') == 1:
             error_token = {
