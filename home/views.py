@@ -26,7 +26,7 @@ def get_client(uid):
     else:
         clients = Client.select().filter(Client.user_id == uid).first()
         if clients:
-            return list(clients)
+            return clients
         else:
             return None
 
