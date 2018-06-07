@@ -33,6 +33,10 @@ class AuthToken(Model):
         expires_at = self.issued_at + self.expires_in * 2
         return expires_at < time.time()
 
+    def is_access_token_expired(self):
+        expires_at = self.issued_at + self.expires_in
+        return expires_at < time.time()
+
     class Meta:
         database = mysql_db
         db_table = 'auth_token'

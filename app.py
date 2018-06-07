@@ -1,6 +1,9 @@
 import datetime
 from flask import Flask, render_template, request, jsonify, session
 import settings
+from libs.auth_token_lib.auth_token_lib import verify_token
+from libs.helper_lib.helpler import need_auth
+from models.auth_token import AuthToken
 from models.db import mysql_db
 from home import home
 from oauth import oauth
@@ -16,13 +19,14 @@ def index():
     return 'Oauth server'
 
 
+@need_auth
 @app.route('/api/me', methods=['GET', 'POST'])
 def me():
-    auth = request.headers.get('Authorization')
-    if not auth:
-        return jsonify(error=1,error_description='MissingAuthorizationError')
-    token_string = auth
-    return jsonify(token=token_string)
+    res = verify_token(request)
+    if res['code'] == 1:
+        return jsonify(error="01",error_description=res['msg'])
+    else:
+        return jsonify(respCode="00", respMsg=res['msg'])
 
 
 @app.before_request
