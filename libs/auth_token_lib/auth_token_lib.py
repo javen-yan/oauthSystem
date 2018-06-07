@@ -4,6 +4,8 @@
 # @Email   : yanzz@catial.cn
 # @File    : auth_token_lib.py
 # @Software: PyCharm
+import json
+
 from libs.security.security import gen_salt, generate_token
 from models.auth_token import AuthToken
 from models.client import Client
@@ -31,11 +33,8 @@ def gen_token_return(params):
 
 
 def verify_token_response(request):
-    token = request.headers.get('Authorization')
-    print('\r\n request.headers \r\n',request.headers)
-    print('\r\n request.values \r\n',request.values)
-    print('\r\n request.args \r\n',request.args)
-    print('\r\n request.data \r\n',request.data)
+    token = json.loads(request.data.decode()).get('payload').get('accessToken')
+    print('\r\n request.data \r\n',request.data.decode())
     _token = AuthToken.get(AuthToken.access_token == token)
     user_id = _token.user_id
     client_id = _token.client_id

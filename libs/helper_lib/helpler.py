@@ -4,6 +4,8 @@
 # @Email   : yanzz@catial.cn
 # @File    : helpler.py
 # @Software: PyCharm
+import json
+
 from flask import Response
 
 from models.auth_token import AuthToken
@@ -11,9 +13,9 @@ from models.auth_token import AuthToken
 
 def need_auth(fn):
     def wrapper(request, *args, **kwargs):
-        auth = request.headers.get('Authorization')
+        auth = json.loads(request.data.decode()).get('payload')
         if auth:
-            token_tmp = AuthToken.select().filter(AuthToken.access_token == auth).first()
+            token_tmp = AuthToken.select().filter(AuthToken.access_token == auth.get('accessToken')).first()
             if token_tmp:
                 if token_tmp.is_access_token_expired():
                     return Response('access_token_expired', status=401)
