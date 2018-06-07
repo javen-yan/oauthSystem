@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>天猫精灵授权页</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="{{ url_for('oauth.static',filename='weui/style/weui.css') }}"/>
+</head>
+<body ontouchstart  class="page-bg">
+
+<form method="post">
+<div class="weui_msg hide" id="msg1" style="display: block; opacity: 1;">
+        <div class="weui_icon_area"><i class="weui_icon_msg weui_icon_info"></i></div>
+        <div class="weui_text_area">
+            <h2 class="weui_msg_title">{{grant.client_name}}授权确认</h2>
+            <p class="weui_msg_desc">确定要授权{{grant.client_name}}获取设备信息吗？确认授权请点击”授权“，否则请点击”取消“</p>
+        </div>
+        <div class="weui_opr_area">
+            <p class="weui_btn_area">
+
+  					<input type="submit" class="weui_btn weui_btn_primary" name="confirm" value="Submit">
+  					<input type="submit" class="weui_btn weui_btn_warn" name="confirm" value="cancel">
+
+            </p>
+        </div>
+        <div class="weui_extra_area">
+
+        </div>
+    </div>
+</form>
+</body>
+</html>

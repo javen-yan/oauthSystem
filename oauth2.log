@@ -221,3 +221,86 @@
 06/07/2018 14:59:28 PM - INFO -  * Debugger PIN: 823-142-298
 06/07/2018 14:59:32 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_id`, `t1`.`token_type`, `t1`.`access_token`, `t1`.`refresh_token`, `t1`.`scope`, `t1`.`revoked`, `t1`.`issued_at`, `t1`.`expires_in` FROM `auth_token` AS `t1` WHERE (`t1`.`access_token` = %s) LIMIT %s OFFSET %s', ['A1LdWtgpis0AbgJX65OeJCLUKU5tAGxSRVyxbpF7C8vPAkib', 1, 0])
 06/07/2018 14:59:32 PM - INFO - 127.0.0.1 - - [07/Jun/2018 14:59:32] "GET /api/me HTTP/1.1" 200 -
+06/07/2018 15:42:21 PM - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+06/07/2018 15:42:21 PM - INFO -  * Restarting with stat
+06/07/2018 15:42:21 PM - WARNING -  * Debugger is active!
+06/07/2018 15:42:21 PM - INFO -  * Debugger PIN: 823-142-298
+06/07/2018 15:42:51 PM - INFO -  * Detected change in '/Users/yanzongzhen/PycharmProjects/OauthSystem/oauth/views.py', reloading
+06/07/2018 15:42:51 PM - INFO -  * Restarting with stat
+06/07/2018 15:42:52 PM - WARNING -  * Debugger is active!
+06/07/2018 15:42:52 PM - INFO -  * Debugger PIN: 823-142-298
+06/07/2018 15:43:01 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:43:01 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:43:01] "GET /oauth/authorize?redirect_uri=http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&client_id=oxwIghHGSP37Af7dahN8yPRv&response_type=code&state=111 HTTP/1.1" 200 -
+06/07/2018 15:43:01 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:43:01] "GET /oauth/static//weui/style/weui.css HTTP/1.1" 404 -
+06/07/2018 15:43:10 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:43:10] "GET /oauth/static//weui/style/weui.css HTTP/1.1" 404 -
+06/07/2018 15:43:18 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:43:18 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:43:18] "GET /oauth/authorize?redirect_uri=http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&client_id=oxwIghHGSP37Af7dahN8yPRv&response_type=code&state=111 HTTP/1.1" 200 -
+06/07/2018 15:43:18 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:43:18] "GET /oauth/static//weui/style/weui.css HTTP/1.1" 404 -
+06/07/2018 15:44:00 PM - INFO -  * Detected change in '/Users/yanzongzhen/PycharmProjects/OauthSystem/oauth/__init__.py', reloading
+06/07/2018 15:44:00 PM - INFO -  * Restarting with stat
+06/07/2018 15:44:00 PM - WARNING -  * Debugger is active!
+06/07/2018 15:44:00 PM - INFO -  * Debugger PIN: 823-142-298
+06/07/2018 15:44:02 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:44:02 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:44:02] "GET /oauth/authorize?redirect_uri=http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&client_id=oxwIghHGSP37Af7dahN8yPRv&response_type=code&state=111 HTTP/1.1" 200 -
+06/07/2018 15:44:02 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:44:02] "GET /oauth/static/weui/style/weui.css HTTP/1.1" 404 -
+06/07/2018 15:44:05 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:44:05 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:44:05] "GET /oauth/authorize?redirect_uri=http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&client_id=oxwIghHGSP37Af7dahN8yPRv&response_type=code&state=111 HTTP/1.1" 200 -
+06/07/2018 15:44:05 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:44:05] "GET /oauth/static/weui/style/weui.css HTTP/1.1" 404 -
+06/07/2018 15:44:33 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:44:33 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:44:33] "GET /oauth/authorize?redirect_uri=http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&client_id=oxwIghHGSP37Af7dahN8yPRv&response_type=code&state=111 HTTP/1.1" 200 -
+06/07/2018 15:44:33 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:44:33] "GET /oauth/static/weui/style/weui.css HTTP/1.1" 404 -
+06/07/2018 15:45:40 PM - INFO -  * Detected change in '/Users/yanzongzhen/PycharmProjects/OauthSystem/oauth/views.py', reloading
+06/07/2018 15:45:40 PM - INFO -  * Restarting with stat
+06/07/2018 15:45:41 PM - WARNING -  * Debugger is active!
+06/07/2018 15:45:41 PM - INFO -  * Debugger PIN: 823-142-298
+06/07/2018 15:45:42 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:45:42 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:45:42] "GET /oauth/authorize?redirect_uri=http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&client_id=oxwIghHGSP37Af7dahN8yPRv&response_type=code&state=111 HTTP/1.1" 500 -
+06/07/2018 15:45:42 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:45:42] "GET /oauth/authorize?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+06/07/2018 15:45:42 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:45:42] "GET /oauth/authorize?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+06/07/2018 15:45:42 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:45:42] "GET /oauth/authorize?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+06/07/2018 15:45:43 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:45:43] "GET /oauth/authorize?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+06/07/2018 15:45:43 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:45:43] "GET /oauth/authorize?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+06/07/2018 15:45:44 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:45:44] "GET /oauth/authorize?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+06/07/2018 15:46:23 PM - INFO -  * Detected change in '/Users/yanzongzhen/PycharmProjects/OauthSystem/oauth/views.py', reloading
+06/07/2018 15:46:23 PM - INFO -  * Restarting with stat
+06/07/2018 15:46:24 PM - WARNING -  * Debugger is active!
+06/07/2018 15:46:24 PM - INFO -  * Debugger PIN: 823-142-298
+06/07/2018 15:46:26 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:46:26 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:46:26] "GET /oauth/authorize?redirect_uri=http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&client_id=oxwIghHGSP37Af7dahN8yPRv&response_type=code&state=111 HTTP/1.1" 200 -
+06/07/2018 15:46:26 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:46:26] "GET /oauth/static/weui/style/weui.css HTTP/1.1" 200 -
+06/07/2018 15:46:32 PM - DEBUG - ('INSERT INTO `auth_code` (`user_id`, `code`, `client_id`, `redirect_uri`, `response_type`, `scope`, `auth_time`) VALUES (%s, %s, %s, %s, %s, %s, %s)', [2, 'nF9NBs9Lz4yMWaapBU3kz2ac', 'oxwIghHGSP37Af7dahN8yPRv', 'http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&state=111', 'code', 'profile', 1528357592])
+06/07/2018 15:46:32 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:46:32] "POST /oauth/authorize?redirect_uri=http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&client_id=oxwIghHGSP37Af7dahN8yPRv&response_type=code&state=111 HTTP/1.1" 302 -
+06/07/2018 15:46:32 PM - DEBUG - *********redirec_uri param is None**********
+06/07/2018 15:46:32 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:46:32 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`code`, `t1`.`client_id`, `t1`.`redirect_uri`, `t1`.`response_type`, `t1`.`scope`, `t1`.`nonce`, `t1`.`auth_time` FROM `auth_code` AS `t1` WHERE (`t1`.`code` = %s) LIMIT %s', ['nF9NBs9Lz4yMWaapBU3kz2ac', 1])
+06/07/2018 15:46:32 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:46:32 PM - DEBUG - ('INSERT INTO `auth_token` (`user_id`, `client_id`, `token_type`, `access_token`, `refresh_token`, `scope`, `revoked`, `issued_at`, `expires_in`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)', [2, 'oxwIghHGSP37Af7dahN8yPRv', 'public', 'xFUNNQ16MS2Fi1OhLpJl44zAUV0GuuO3O5kSO8nkTyJtask8', 'REqONB5s9yAh2llGJHjaLvgdyPqeS21S5pPHBKGdUDDtcDT1', 'profile', False, 1528357592, 172800])
+06/07/2018 15:46:32 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:46:32] "POST /oauth/token HTTP/1.1" 200 -
+06/07/2018 15:46:49 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:46:49 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:46:49] "GET /oauth/authorize?redirect_uri=http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&client_id=oxwIghHGSP37Af7dahN8yPRv&response_type=code&state=111 HTTP/1.1" 200 -
+06/07/2018 15:47:37 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:47:37 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:47:37] "GET /oauth/authorize?redirect_uri=http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&client_id=oxwIghHGSP37Af7dahN8yPRv&response_type=code&state=111 HTTP/1.1" 200 -
+06/07/2018 15:48:07 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:48:07 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:48:07] "GET /oauth/authorize?redirect_uri=http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&client_id=oxwIghHGSP37Af7dahN8yPRv&response_type=code&state=111 HTTP/1.1" 200 -
+06/07/2018 15:48:46 PM - INFO -  * Detected change in '/Users/yanzongzhen/PycharmProjects/OauthSystem/oauth/views.py', reloading
+06/07/2018 15:48:46 PM - INFO -  * Restarting with stat
+06/07/2018 15:48:46 PM - WARNING -  * Debugger is active!
+06/07/2018 15:48:46 PM - INFO -  * Debugger PIN: 823-142-298
+06/07/2018 15:48:48 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:48:48 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:48:48] "GET /oauth/authorize?redirect_uri=http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&client_id=oxwIghHGSP37Af7dahN8yPRv&response_type=code&state=111 HTTP/1.1" 200 -
+06/07/2018 15:48:50 PM - DEBUG - ('INSERT INTO `auth_code` (`user_id`, `code`, `client_id`, `redirect_uri`, `response_type`, `scope`, `auth_time`) VALUES (%s, %s, %s, %s, %s, %s, %s)', [2, 'FQT3qZ4RRWmZKIpPPtoktKsS', 'oxwIghHGSP37Af7dahN8yPRv', 'http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&state=111', 'code', 'profile', 1528357730])
+06/07/2018 15:48:50 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:48:50] "POST /oauth/authorize?redirect_uri=http://127.0.0.1:8000/callback?skillId=11111111&token=2whnejfhnwhdnjniji==&client_id=oxwIghHGSP37Af7dahN8yPRv&response_type=code&state=111 HTTP/1.1" 302 -
+06/07/2018 15:48:50 PM - DEBUG - *********redirec_uri param is None**********
+06/07/2018 15:48:50 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:48:50 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`code`, `t1`.`client_id`, `t1`.`redirect_uri`, `t1`.`response_type`, `t1`.`scope`, `t1`.`nonce`, `t1`.`auth_time` FROM `auth_code` AS `t1` WHERE (`t1`.`code` = %s) LIMIT %s', ['FQT3qZ4RRWmZKIpPPtoktKsS', 1])
+06/07/2018 15:48:50 PM - DEBUG - ('SELECT `t1`.`id`, `t1`.`user_id`, `t1`.`client_name`, `t1`.`client_id`, `t1`.`client_secret`, `t1`.`expires_at`, `t1`.`redirect_uri`, `t1`.`grant_type`, `t1`.`response_type`, `t1`.`scope` FROM `client` AS `t1` WHERE (`t1`.`client_id` = %s) LIMIT %s', ['oxwIghHGSP37Af7dahN8yPRv', 1])
+06/07/2018 15:48:50 PM - DEBUG - ('INSERT INTO `auth_token` (`user_id`, `client_id`, `token_type`, `access_token`, `refresh_token`, `scope`, `revoked`, `issued_at`, `expires_in`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)', [2, 'oxwIghHGSP37Af7dahN8yPRv', 'public', 's2XIxYzLfSgqjerGxs0v4uTjWjjUCGUXMPuSlaDTq1HJrZvH', 'KN3EHbzsamAdF8fyopkCLwCDy1ffNMtDG4JZka3smcCRbGBh', 'profile', False, 1528357730, 172800])
+06/07/2018 15:48:50 PM - INFO - 127.0.0.1 - - [07/Jun/2018 15:48:50] "POST /oauth/token HTTP/1.1" 200 -
+06/07/2018 15:49:19 PM - INFO -  * Detected change in '/Users/yanzongzhen/PycharmProjects/OauthSystem/oauth/views.py', reloading
+06/07/2018 15:49:19 PM - INFO -  * Restarting with stat
+06/07/2018 15:49:20 PM - WARNING -  * Debugger is active!
+06/07/2018 15:49:20 PM - INFO -  * Debugger PIN: 823-142-298
+06/07/2018 15:49:27 PM - INFO -  * Detected change in '/Users/yanzongzhen/PycharmProjects/OauthSystem/oauth/views.py', reloading
+06/07/2018 15:49:27 PM - INFO -  * Restarting with stat
+06/07/2018 15:49:27 PM - WARNING -  * Debugger is active!
+06/07/2018 15:49:27 PM - INFO -  * Debugger PIN: 823-142-298

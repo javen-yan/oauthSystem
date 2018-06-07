@@ -34,7 +34,6 @@ def oauth_token():
     else:
         data = request.values
         # data=json.loads(request.data.decode())
-        logging.debug('*********redirec_uri param is %s**********' % request.values.get('redirect_uri'))
         print('values param is %s' % request.values)
         res = verify_auth_code(data)
         if res.get('code') == 1:
@@ -70,13 +69,13 @@ def authorize():
                 return jsonify(code=1,msg='Not support response_type')
             else:
                 if raw_redirect_url == grant.redirect_uri:
-                    return render_template('oauth.html', grant=grant, user=user)
+                    return render_template('authrized.html', grant=grant, user=user)
                 else:
                     return jsonify(code=1,msg='incorrect redirect_uri')
         else:
             return jsonify(code=1,msg='grant Not such client')
     else:
-        if request.form['confirm']:
+        if request.form['confirm'] == 'Submit':
             uri = gen_auth_code(grant, _redirect_url)
             return redirect(uri)
         else:
