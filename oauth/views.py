@@ -27,7 +27,7 @@ def oauth_token():
     if request.method == 'GET':
         return jsonify(code=1,msg='Not support GET methods')
     else:
-        data = request.args
+        data = json.loads(request.data.decode('utf8'))
         res = verify_auth_code(data)
         if res.get('code') == 1:
             error_token = {

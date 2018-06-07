@@ -22,6 +22,7 @@ def me():
         return jsonify(code=0,token=request.args.get('token'))
 
 
+
 @app.before_request
 def _db_connect():
     mysql_db.connect()

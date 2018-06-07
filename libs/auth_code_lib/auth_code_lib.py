@@ -30,17 +30,17 @@ def gen_auth_code(grant, redirect_uri):
 def verify_auth_code(data):
     try:
         client = Client.get(Client.client_id == data.get('client_id'))
-    except Exception as e:
-        return {'code': 1, 'msg': 'no such client'}
-    if data.get('client_secret') != client.client_secret:
-        return {'code': 1, 'msg': 'client_secret is error'}
-    else:
-        try:
-            authcode = AuthCode.get(AuthCode.code == data.get('code'))
-        except Exception as e:
-
-            return {'code': 1, 'msg': 'code is error'}
-        if authcode.is_expired():
-            return {'code': 1, 'msg': 'code is_expired'}
+        if data.get('client_secret') != client.client_secret:
+            return {'code': 1, 'msg': 'client_secret is error'}
         else:
-            return {'code': 0, 'msg': 'code is ok'}
+            try:
+                authcode = AuthCode.get(AuthCode.code == data.get('code'))
+                if authcode.is_expired():
+                    return {'code': 1, 'msg': 'code is_expired'}
+                else:
+                    return {'code': 0, 'msg': 'code is ok'}
+            except Exception as e:
+                return {'code': 1, 'msg': 'code is error'}
+    except Exception as e:
+        return {'code': 1, 'msg': 'code verify error no such client'}
+
