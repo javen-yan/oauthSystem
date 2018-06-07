@@ -30,14 +30,9 @@ def gen_token_return(params):
         return {'code': 1, 'msg': 'token general error No such client'}
 
 
-def verify_token(request):
-    auth = request.headers.get('Authorization')
-    print(request.headers)
-    token_tmp = AuthToken.select().filter(AuthToken.access_token == auth).first()
-    if token_tmp:
-        if token_tmp.is_access_token_expired():
-            return {'code':1, 'msg':'access_token_expired'}
-        else:
-            return {'code':0, 'msg':'access_token_is_ok'}
-    else:
-        return {'code': 1, 'msg': 'access_token_invalid'}
+def verify_token_response(request):
+    token = request.headers.get('Authorization')
+    _token = AuthToken.get(AuthToken.access_token == token)
+    user_id = _token.user_id
+    client_id = _token.client_id
+    return {'code':0,'data':{'user_id':user_id,'client_id':client_id}}

@@ -6,12 +6,21 @@
 # @Software: PyCharm
 from flask import Response
 
+from models.auth_token import AuthToken
+
 
 def need_auth(fn):
     def wrapper(request, *args, **kwargs):
-        if request.header.get('Authorization'):
-            return fn(request, *args, **kwargs)
+        auth = request.headers.get('Authorization')
+        if auth:
+            token_tmp = AuthToken.select().filter(AuthToken.access_token == auth).first()
+            if token_tmp:
+                if token_tmp.is_access_token_expired():
+                    return Response('access_token_expired', status=401)
+                else:
+                    return fn(request, *args, **kwargs)
+            else:
+                return Response('access_token_invalid', status=401)
         else:
-            print('Unauthorized',request.values)
             return Response('Unauthorized', status=401)
     return wrapper

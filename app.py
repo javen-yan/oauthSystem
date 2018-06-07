@@ -1,7 +1,7 @@
 import datetime
 from flask import Flask, render_template, request, jsonify, session
 import settings
-from libs.auth_token_lib.auth_token_lib import verify_token
+from libs.auth_token_lib.auth_token_lib import  verify_token_response
 from libs.helper_lib.helpler import need_auth
 from models.auth_token import AuthToken
 from models.db import mysql_db
@@ -22,11 +22,8 @@ def index():
 @need_auth
 @app.route('/api/me', methods=['GET', 'POST'])
 def me():
-    res = verify_token(request)
-    if res['code'] == 1:
-        return jsonify(error="01",error_description=res['msg'])
-    else:
-        return jsonify(respCode="00", respMsg=res['msg'])
+    res = verify_token_response(request)
+    return jsonify(res)
 
 
 @app.before_request
@@ -41,4 +38,4 @@ def _db_close(exc):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
