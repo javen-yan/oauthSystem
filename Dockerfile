@@ -11,6 +11,9 @@ RUN pip install mysqlclient
 RUN pip install uwsgi
 
 RUN chown 1001:1001 /app -R
+RUN chown 1001:1001 /app/oauth2 -R
+RUN chown 1001:1001 /app/oauth2/* -R
+
 USER 1001
 
 CMD uwsgi --ini app.ini
