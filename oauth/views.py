@@ -33,6 +33,8 @@ def oauth_token():
     else:
         params = request.data.decode()
         logging.debug('param is %s' % params)
+        logging.debug('args param is %s' % request.args)
+        logging.debug('values param is %s' % request.values)
         data = json.loads(params)
         res = verify_auth_code(data)
         if res.get('code') == 1:
