@@ -27,19 +27,8 @@ def oauth_token():
     if request.method == 'GET':
         return jsonify(code=1,msg='Not support GET methods')
     else:
-        params = request.data
-        if params is None:
-            error_token = {
-                'error': "001",
-                'error_description': 'Server can not get Data'
-            }
-            format_Ress = json.dumps(error_token)
-            return Response(
-                response=format_Ress,
-                mimetype="application/json",
-                status=200
-            )
-        data = json.loads(params.decode())
+        params = request.data.decode()
+        data = json.loads(params)
         res = verify_auth_code(data)
         if res.get('code') == 1:
             error_token = {
