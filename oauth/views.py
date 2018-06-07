@@ -6,8 +6,10 @@
 # @Software: PyCharm
 import json
 
+import os
 from flask import request, jsonify, render_template, Response
-
+import logging
+import settings
 from libs.json_file.json_file_lib import json_file_redaer, json_write
 from libs.rewrite.rewrite_utils import redirect
 from home.views import current_user
@@ -18,6 +20,8 @@ from oauth import oauth
 _redirect_url = None
 grant = None
 
+log_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'my.log')
+logging.basicConfig(filename=log_path, level=logging.DEBUG, format=settings.LOG_FORMAT, datefmt=settings.DATE_FORMAT)
 save_json = json_file_redaer()
 
 
@@ -28,7 +32,7 @@ def oauth_token():
         return jsonify(code=1,msg='Not support GET methods')
     else:
         params = request.data.decode()
-        print(params)
+        logging.debug('param is %s' % params)
         data = json.loads(params)
         res = verify_auth_code(data)
         if res.get('code') == 1:
@@ -106,6 +110,4 @@ def authorize():
             return redirect(uri)
         else:
             return render_template('oauth.html', grant=grant, user=user)
-
-
 
