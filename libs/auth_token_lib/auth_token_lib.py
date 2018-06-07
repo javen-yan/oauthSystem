@@ -33,6 +33,9 @@ def gen_token_return(params):
 def verify_token_response(request):
     token = request.headers.get('Authorization')
     print('\r\n request.headers \r\n',request.headers)
+    print('\r\n request.values \r\n',request.values)
+    print('\r\n request.args \r\n',request.args)
+    print('\r\n request.data \r\n',request.data)
     _token = AuthToken.get(AuthToken.access_token == token)
     user_id = _token.user_id
     client_id = _token.client_id
