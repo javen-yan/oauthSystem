@@ -22,7 +22,7 @@ def gen_token_return(params):
             access_token=access_token,
             refresh_token=refresh_token,
             scope=client.scope,
-            expires_in=17600000
+            expires_in=172800
         )
         token_tmp.save()
         return {'code': 0, 'msg': 'token is ok', 'data': token_tmp}
