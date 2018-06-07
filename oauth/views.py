@@ -20,7 +20,7 @@ from oauth import oauth
 _redirect_url = None
 grant = None
 
-log_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'my.log')
+log_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),'my.log')
 logging.basicConfig(filename=log_path, level=logging.DEBUG, format=settings.LOG_FORMAT, datefmt=settings.DATE_FORMAT)
 save_json = json_file_redaer()
 
