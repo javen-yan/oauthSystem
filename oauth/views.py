@@ -89,23 +89,23 @@ def authorize():
     if request.method == 'GET':
         request_data = request.args
         client_id = request_data.get('client_id')
-        try:
-            grant = Client.get(Client.client_id == client_id)
-        except Exception as e:
-            return jsonify(code=1,msg='No Such Client')
         redirect_url = request_data.get('redirect_uri')
         raw_redirect_url = redirect_url.split('?')[0]
         _token = request_data.get('token')
         _state = request_data.get('state')
         _redirect_url = redirect_url+'&token=%s&state=%s' % (_token, _state)
         response_type = request_data.get('response_type')
-        if grant.response_type != response_type:
-            return jsonify(code=1,msg='Not support response_type')
-        else:
-            if raw_redirect_url == grant.redirect_uri:
-                return render_template('oauth.html', grant=grant, user=user)
+        grant = Client.select().filter(Client.client_id == client_id).first()
+        if grant:
+            if grant.response_type != response_type:
+                return jsonify(code=1,msg='Not support response_type')
             else:
-                return jsonify(code=1,msg='incorrect redirect_uri')
+                if raw_redirect_url == grant.redirect_uri:
+                    return render_template('oauth.html', grant=grant, user=user)
+                else:
+                    return jsonify(code=1,msg='incorrect redirect_uri')
+        else:
+            return jsonify(code=1,msg='grant Not such client')
     else:
         if request.form['confirm']:
             uri = gen_auth_code(grant, _redirect_url)

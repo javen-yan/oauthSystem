@@ -13,8 +13,8 @@ def gen_token_return(params):
     access_token = generate_token(48)
     refresh_token = generate_token(48)
     client_id = params.get('client_id')
-    try:
-        client = Client.get(Client.client_id == client_id)
+    client = Client.select().filter(Client.client_id == client_id).first()
+    if client:
         token_tmp = AuthToken(
             user_id=client.user_id,
             client_id=client.client_id,
@@ -26,5 +26,5 @@ def gen_token_return(params):
         )
         token_tmp.save()
         return {'code': 0, 'msg': 'token is ok', 'data': token_tmp}
-    except Exception as e:
+    else:
         return {'code': 1, 'msg': 'token general error No such client'}

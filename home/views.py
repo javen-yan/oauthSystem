@@ -24,11 +24,11 @@ def get_client(uid):
     if uid is None:
         return None
     else:
-        clients = Client.select().where(Client.user_id == uid).dicts()
-        if len(list(clients)) == 0:
-            return None
-        else:
+        clients = Client.select().filter(Client.user_id == uid).first()
+        if clients:
             return list(clients)
+        else:
+            return None
 
 
 @home.route('/', methods=['GET', 'POST'])
@@ -36,13 +36,8 @@ def index():
     if request.method == 'POST':
         user = request.form.get('user')
         pw = request.form.get('pw')
-        try:
-            user = User.get(User.username == user)
-        except Exception as e:
-            user = None
-        if user is None:
-            return jsonify(code=1,msg='没有此用户')
-        else:
+        user = User.select().filter(User.username == user).first()
+        if user:
             if user.check_password(pw):
                 session.permanent = True
                 session['id'] = user.id
@@ -50,6 +45,8 @@ def index():
                 return render_template('index.html', user=user, clients=clients)
             else:
                 return jsonify(code=1, msg='密码错误')
+        else:
+            return jsonify(code=1,msg='没有此用户')
     else:
         user = current_user()
         if user is not None:
@@ -65,11 +62,8 @@ def register():
         username = request.form.get('user')
         pw = request.form.get('pw')
         pw1 = request.form.get('pw1')
-        try:
-            user = User.get(User.username == username)
-        except Exception as e:
-            user = None
-        if user is not None:
+        user = User.select().filter(User.username == username).first()
+        if user:
             return jsonify(code=1,msg='用户已经存在')
         else:
             if pw != pw1:
