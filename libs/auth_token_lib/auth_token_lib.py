@@ -38,4 +38,6 @@ def verify_token_response(request):
     _token = AuthToken.get(AuthToken.access_token == token)
     user_id = _token.user_id
     client_id = _token.client_id
-    return {'code':0,'data':{'user_id':user_id,'client_id':client_id}}
+    resp = {'code':0,'data':{'user_id':user_id,'client_id':client_id}}
+    print('\r\n request.response \r\n',resp)
+    return resp
