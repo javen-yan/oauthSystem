@@ -7,7 +7,7 @@
 from werkzeug.utils import escape
 
 
-def redirect(location, code=302, Response=None):
+def myredirect(location, code=302, Response=None):
     """Returns a response object (a WSGI application) that, if called,
     redirects the client to the target location.  Supported codes are 301,
     302, 303, 305, and 307.  300 is not supported because it's not a real

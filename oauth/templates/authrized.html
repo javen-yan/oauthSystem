@@ -8,8 +8,9 @@
 </head>
 <body ontouchstart  class="page-bg">
 
+{% if user %}
 <form method="post">
-<div class="weui_msg hide" id="msg1" style="display: block; opacity: 1;">
+    <div class="weui_msg hide" id="msg1" style="display: block; opacity: 1;">
         <div class="weui_icon_area"><i class="weui_icon_msg weui_icon_info"></i></div>
         <div class="weui_text_area">
             <h2 class="weui_msg_title">{{grant.client_name}}授权确认</h2>
@@ -28,5 +29,34 @@
         </div>
     </div>
 </form>
+{% else %}
+<form action="/oauth/login" method="post">
+    <div class="weui_msg hide" id="msg1" style="display: block; opacity: 1;">
+        <div class="weui_icon_area"><i class="weui_icon_msg weui_icon_info"></i></div>
+        <div class="weui_text_area">
+            <h2 class="weui_msg_title">还未登录</h2>
+            <p class="weui_msg_desc">为了让您更方便的使用本服务，请进行登陆</p>
+        </div>
+        <div class="weui_opr_area">
+            <div class="weui_cells_form">
+                <div class="weui_cell">
+                    <input type="text" class="weui_input" name="user" placeholder="请输入用户名">
+                </div>
+                <div class="weui_cell">
+                    <input type="password" class="weui_input" name="pw" placeholder="请输入密码">
+                </div>
+                <div class="weui_cell">
+                    <input type="text" class="weui_input" name="back_uri" hidden value="{{ back_uri }}">
+                </div>
+            </div>
+        </div>
+        <div class="weui_opr_area">
+            <p class="weui_btn_area">
+                <button type="submit" class="weui_btn weui_btn_primary">登陆</button>
+            </p>
+        </div>
+    </div>
+</form>
+{% endif %}
 </body>
 </html>

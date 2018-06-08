@@ -7,15 +7,16 @@
 import json
 
 import os
-from flask import request, jsonify, render_template, Response
+from flask import request, jsonify, render_template, redirect, session
 import logging
 import settings
 from libs.json_file.json_file_lib import json_file_redaer, json_write
-from libs.rewrite.rewrite_utils import redirect
+from libs.rewrite.rewrite_utils import myredirect
 from home.views import current_user
 from libs.auth_code_lib.auth_code_lib import gen_auth_code, verify_auth_code
 from libs.auth_token_lib.auth_token_lib import gen_token_return
 from models.client import Client
+from models.user import User
 from oauth import oauth
 _redirect_url = None
 grant = None
@@ -32,8 +33,8 @@ def oauth_token():
     if request.method == 'GET':
         return jsonify(code=1,msg='Not support GET methods')
     else:
-        data = request.values
-        # data=json.loads(request.data.decode())
+        # data = request.values
+        data = json.loads(request.data.decode())
         print('values param is %s' % request.values)
         res = verify_auth_code(data)
         if res.get('code') == 1:
@@ -69,14 +70,39 @@ def authorize():
                 return jsonify(code=1,msg='Not support response_type')
             else:
                 if raw_redirect_url == grant.redirect_uri:
-                    return render_template('authrized.html', grant=grant, user=user)
+                    back_uri = settings.HOST + '/oauth/authorize?' \
+                                               'redirect_uri=%s&client_id=%s' \
+                                               '&response_type=%s&state=%s' % (
+                                                redirect_url,
+                                                client_id,
+                                                response_type,
+                                                _state
+                                                )
+                    print(back_uri)
+                    return render_template('authrized.html', grant=grant, user=user, back_uri=back_uri)
                 else:
                     return jsonify(code=1,msg='incorrect redirect_uri')
         else:
             return jsonify(code=1,msg='grant Not such client')
     else:
         if request.form['confirm'] == 'Submit':
-            uri = gen_auth_code(grant, _redirect_url)
-            return redirect(uri)
+            uri = gen_auth_code(grant=grant, redirect_uri=_redirect_url,grant_user=user)
+            return myredirect(uri)
         else:
             return jsonify(code=1,msg='Client give up')
+
+
+@oauth.route('/login', methods=['GET', 'POST'])
+def auth_login():
+    if request.method == 'POST':
+        user = request.form['user']
+        pw = request.form['pw']
+        back_uri = request.form['back_uri']
+        user_tmp = User.select().filter(User.username == user).first()
+        if user_tmp:
+            if user_tmp.check_password(pw):
+                session['id'] = user_tmp.id
+                return redirect(back_uri)
+            else:
+                return '密码错误'
+        return '还未注册'

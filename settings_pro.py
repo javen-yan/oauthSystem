@@ -24,7 +24,7 @@ SECRET_KEY = 'hjidhiodkjkdjiqjwdjowiejdoj'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 #域名配置
-HOST = 'http://127.0.0.1'
+HOST = 'https://oauth.geek-ealine.xyz'
 
 #log
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"

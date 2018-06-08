@@ -12,10 +12,10 @@ from models.auth_code import AuthCode
 from models.client import Client
 
 
-def gen_auth_code(grant, redirect_uri):
+def gen_auth_code(grant, redirect_uri,grant_user):
     code = gen_salt(24)
     authcode_tmp = AuthCode(
-        user_id=grant.user_id,
+        user_id=grant_user.id,
         client_id=grant.client_id,
         redirect_uri=redirect_uri,
         scope=grant.scope,
