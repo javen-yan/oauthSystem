@@ -33,8 +33,8 @@ def oauth_token():
     if request.method == 'GET':
         return jsonify(code=1,msg='Not support GET methods')
     else:
-        # data = request.values
-        data = json.loads(request.data.decode())
+        data = request.values
+        # data = json.loads(request.data.decode())
         print('values param is %s' % request.values)
         res = verify_auth_code(data)
         if res.get('code') == 1:
@@ -78,7 +78,9 @@ def authorize():
                                                 response_type,
                                                 _state
                                                 )
+                    print('\r\n**************back_uri**************\r\n')
                     print(back_uri)
+                    print('\r\n**************back_uri**************\r\n')
                     return render_template('authrized.html', grant=grant, user=user, back_uri=back_uri)
                 else:
                     return jsonify(code=1,msg='incorrect redirect_uri')
