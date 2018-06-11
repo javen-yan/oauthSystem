@@ -85,9 +85,12 @@
 <body>
 {% if user %}
     <div style="text-align: center">当前登陆用户为 <strong>{{user}}</strong> [<a href="{{ url_for('.logout') }}" style="color: dodgerblue">退出登陆</a>]</div>
+    {% if user.is_superuser  %}
     <div style="text-align: center;margin-top: 30px;margin-bottom: 30px">
         <a href="{{ url_for('.clients') }}" style="color: dodgerblue; font-size: 30px">创建客户端</a>
     </div>
+    {% else %}
+    {% endif %}
     {% if clients %}
             <table border="1" align="center">
                 <caption>客户端列表</caption>

@@ -18,6 +18,7 @@ class User(Model):
     first_name = CharField(max_length=20, null=True)
     last_name = CharField(max_length=20, null=True)
     create_at = DateField(default=datetime.now())
+    is_superuser = BooleanField(default=False)
     last_login = TimestampField()
 
     def __str__(self):
